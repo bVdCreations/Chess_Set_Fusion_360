@@ -78,8 +78,11 @@ class Circle2D:
             m2, b2 = self.perpendicular_middel_line(point1=(point2[1], point2[2]), point2=(point3[1], point3[2]))
             print(m2,b2)
             self.set_y((b2 - b1) / (m1 - m2))
+            print("y={}".format(self.get_y()))
             self.set_z(m1 * self.get_y() + b1)
+            print("z={}".format(self.get_z()))
             self.set_radius((self.get_y() - point1[1]) ** 2 + (self.get_z() - point1[2]) ** 2)
+            print("radius={}".format(self.get_radius()))
 
     def perpendicular_middel_line(self, point1=(0, 0), point2=(0, 0)):
         # a line can is discriped as y = x m + b
@@ -98,3 +101,8 @@ class Circle2D:
             self.set_plane("xz")
         elif point1[2] == point2[2] == point3[2]:
             self.set_plane("xy")
+
+
+if __name__== "__Main__":
+    c = Circle2D("test")
+    c.circle_by_three_points((0,0,25),(0,12,30),(0,15,60))
